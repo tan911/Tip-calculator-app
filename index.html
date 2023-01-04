@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Frontendmentor | Tip calculator app main</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1></h1>
+      </div>
+        <div class="root__container">
+            <div class="inputs__container">
+                <div>
+                    <label for="bill">Bill</label>
+                    <input type="text" />
+                </div>
+                <form>
+                    <fieldset>
+                    <legend>Select Tip %</legend>
+                    <div class="inputs__tip__container">
+                        <div class="input__tip__container">
+                            <input type="radio" name="tip" id="five-percent" class="visually-hidden"/>
+                            <label for="five-percent">5%</label>
+                        </div>
+                        <div class="input__tip__container">
+                            <input type="radio" name="tip" id="ten-percent" class="visually-hidden"/>
+                            <label for="ten-percent">10%</label>
+                        </div>
+                        <div class="input__tip__container">
+                            <input type="radio" name="tip" id="fifteen-percent" class="visually-hidden"/>
+                            <label for="fifteen-percent">15%</label>
+                        </div>
+                        <div class="input__tip__container">
+                            <input type="radio" name="tip" id="twentyfive-percent" class="visually-hidden"/>
+                            <label for="twentyfive-percent">25%</label>
+                        </div>
+                        <div class="input__tip__container">
+                            <input type="radio" name="tip" id="custom" class="visually-hidden"/>
+                            <label for="custom">50%</label>
+                        </div>
+                        <div class="input__tip__container">
+                            <input type="text" name="tip" id="five-percent"/>
+                            <label for="five-percent" class="visually-hidden">custom</label>
+                        </div>
+                    </div>
+                    </fieldset>
+                </form>
+                <div class="numberOf__people__container">
+                   <label for="number__of__people">Number of People</label>
+                   <input id="number__of__people" type="text" name="input__num__people" aria-describedby="error-message">
+                   <span id="error-message">Can't be zero</span>
+                </div>
+            </div>
+            
+            <div class="outputs__container">
+                <div>
+                    <div>
+                        <h2>Tip Amount</h2>
+                        <p>/ person</p>
+                    </div>
+                    <div>
+                        <p>$0.00</p>
+                    </div>
+                    <div>
+                        <h2>Total</h2>
+                        <p>/ person</p>
+                    </div>
+                    <div>
+                        <p>$0.00</p>
+                    </div>
+                </div>
+                <button>Reset</button>
+            </div>
+      </div>
+    </main>
+  </body>
+</html>
