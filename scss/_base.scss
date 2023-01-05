@@ -89,12 +89,58 @@ h6 {
     src: url('../assets/font/SpaceMono-Bold.ttf');
 }
 
+
+// QUERIES
+@mixin respond($breakpoint) {
+
+  // 600px
+  @if $breakpoint == screen-xs {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  // 800px
+  @if $breakpoint == screen-s {
+    @media only screen and (max-width: 50em) {
+      @content;
+    }
+  }
+
+  // 1200px
+  @if $breakpoint == screen-lg {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+
+  // 1400px
+  @if $breakpoint == screen-xl {
+    @media only screen and (max-width: 87.5em) {
+      @content;
+    }
+  }
+
+  // 1440px up
+  @if $breakpoint == screen-xxl {
+    @media only screen and (min-width: 90em) {
+      @content;
+    }
+  }
+}
+
 body {
     font-family: customFont, monospace;
+    min-height: 100vh;
     background-color: var(--color-005);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.hidden {
+  display: none;
 }
 
 .visually-hidden {
