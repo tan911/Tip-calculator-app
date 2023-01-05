@@ -1,27 +1,56 @@
-.main {
+@use './base' as queries;
+
+.logo__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+
+.root__container {
     background-color: var(--color-007);
     width: 100%;
     // max-width: 62.5rem;
     max-width: 53.125rem;
     margin: 0 auto;
-    padding: 2rem 2.9rem;
-}
-
-.root__container {
+    padding: 2rem 1.8rem 2rem 2.9rem;
+    border-radius: 30px;
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
+
+    @include queries.respond(screen-xs) {
+        flex-direction: column;
+    }
 }
+
 
 .inputs__container {
     flex: 1;
+    padding: 0.8rem 0;
     // background-color: lime;
 }
+
 
 .bill__container,
 .form {
     margin-bottom: 3rem;
 }
+
+.bill__container,
+.numberOf__people__container {
+    position: relative;
+}
+
+.icon__dollar,
+.icon__person {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    transform: translateY(-80%);
+}
+
 
 .bill__title,
 .select__tip__title,
@@ -31,30 +60,44 @@
     margin-bottom: 0.3rem;
 }
 
+
 .select__tip__title {
     margin-bottom: 1rem;
 }
 
+
 .bill__input,
 .numbOf__people__input {
+    position: relative;
     width: 100%;
+    font-size: 24px; // TODO
     background-color: var(--color-006);
     text-align: right;
-    padding: 0.7rem 1rem;
+    padding: 0.2rem 1rem;
     border: none;
     border-radius: 5px;
     box-shadow: inset 2rem 2rem 2rem rgba(0, 0, 0, 0.0125);
+    outline: none;
 
     &::placeholder {
-        font-size: 24px;
         color: var(--color-004);
     }
+
+    &[type=text] {
+        color: var(--color-002);
+    }
+
+    &:focus {
+        outline: 2px solid var(--color-001);
+    }
 }
+
 
 .input__fieldset__container {
     padding: 0;
     border: none;
 }
+
 
 .inputs__tip__container {
     display: grid;
@@ -63,15 +106,23 @@
     gap: 1rem;
 }
 
+
 .input__tip__container {
-    font-size: 24px;
+    font-size: 24px; 
     text-align: center;
     border-radius: 5px;
+    cursor: pointer;
+
     
     &:not(:last-child) {
         color: var(--color-006);
         background-color: var(--color-002);
         padding: 0.15em 0;
+
+            & label,
+            & input {
+            cursor: inherit;
+        }
     }
 
     &:last-child {
@@ -85,15 +136,19 @@
             border: none;
             border-radius: 5px;
             box-shadow: inset 2rem 2rem 2rem rgba(0, 0, 0, 0.0125);
+            outline: none;
 
             &::placeholder {
                 color: var(--color-002);
                 text-align: center;
             }
 
-            // TODO
             &[type=text] {
-                // padding-right: 1rem;
+                color: var(--color-002);
+            }
+
+            &:focus {
+                outline: 2px solid var(--color-001);
             }
         }
     }
@@ -114,6 +169,8 @@
         grid-column: tip-col-end 4 / tip-end;
     }
 }
+
+
 .numberOf__people__container {
     position: relative;
     // background-color: red;
@@ -129,5 +186,39 @@
 
 .outputs__container {
     flex: 1;
-    background-color: red;
+    background-color: var(--color-002);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
 }
+
+
+.wrapper__amount,
+.wrapper__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper__amount {
+    margin-bottom: 3rem;
+}
+
+
+.wrapper__title {
+    color: var(--color-006);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.wrapper__person {
+    color: var(--color-004);
+}
+
+.wrapper__price {
+    color: var(--color-001);
+    font-size: 40px;
+}
+
