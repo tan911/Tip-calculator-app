@@ -1,8 +1,37 @@
+@use './base' as queries;
+
 .btn__reset {
     font-size: 1.2rem;
     padding: 0.4rem 0;
+    background-color: hsl(183, 96%, 21%);
+    color: hsl(183, 100%, 15%);
     border: none;
     border-radius: 5px;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s ease;
+
+
+    @include queries.respond(screen-xxl) {
+        font-size: 1.75rem; 
+    }
+
+    &:hover {
+        color: var(--color-002);
+        background-color: var(--color-005);
+    }
+    
+    &:active {
+        background-color: var(--color-001);
+    }
+}
+
+button:disabled,
+button[disabled],
+button:hover:disabled,
+button:focus:disabled,
+button:active:disabled {
+    background-color: hsl(183, 96%, 21%);
+    color: hsl(183, 100%, 15%);
+    cursor: not-allowed;
 }
