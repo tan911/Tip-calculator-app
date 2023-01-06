@@ -1,5 +1,12 @@
 @use './base' as queries;
 
+.main {
+    @include queries.respond(screen-md) {
+        min-height: 100vh;
+        padding-top: 4rem;
+    }
+}
+
 .logo__container {
     display: flex;
     align-items: center;
@@ -20,8 +27,17 @@
     gap: 3rem;
     flex-wrap: wrap;
 
-    @include queries.respond(screen-xs) {
+    @include queries.respond(screen-xxl) {
+        max-width: 75rem;
+    } 
+
+    @include queries.respond(screen-md) {
+        // border: 1px solid red;
         flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 
@@ -30,6 +46,10 @@
     flex: 1;
     padding: 0.8rem 0;
     // background-color: lime;
+
+    @include queries.respond(screen-md) {
+        padding: 0;
+    }
 }
 
 
@@ -56,8 +76,13 @@
 .select__tip__title,
 .numberOf__people__title {
     display: block;
+    font-size: var(--font-size--xs);
     color: var(--color-003);
     margin-bottom: 0.3rem;
+
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--s); 
+    } 
 }
 
 
@@ -70,7 +95,7 @@
 .numbOf__people__input {
     position: relative;
     width: 100%;
-    font-size: 24px; // TODO
+    font-size: var(--font-size--default); 
     background-color: var(--color-006);
     text-align: right;
     padding: 0.2rem 1rem;
@@ -78,6 +103,10 @@
     border-radius: 5px;
     box-shadow: inset 2rem 2rem 2rem rgba(0, 0, 0, 0.0125);
     outline: none;
+
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--md); 
+    } 
 
     &::placeholder {
         color: var(--color-004);
@@ -104,20 +133,31 @@
     grid-template-rows: repeat(2, minmax(min-content, 1fr));
     grid-template-columns: [tip-start]  repeat(6, [tip-col-start] minmax(min-content, 5rem) [tip-col-end]) [tip-end];
     gap: 1rem;
+
+    @include queries.respond(screen-md) {
+        grid-template-rows: repeat(3, minmax(min-content, 1fr));
+    }
 }
 
 
 .input__tip__container {
-    font-size: 24px; 
+    font-size: var(--font-size--default); 
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
 
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--md);
+    } 
     
     &:not(:last-child) {
         color: var(--color-006);
         background-color: var(--color-002);
         padding: 0.15em 0;
+
+        @include queries.respond(screen-md) {
+            padding: 0.2em;
+        }
 
             & label,
             & input {
@@ -137,6 +177,10 @@
             border-radius: 5px;
             box-shadow: inset 2rem 2rem 2rem rgba(0, 0, 0, 0.0125);
             outline: none;
+
+            @include queries.respond(screen-md) {
+                padding: 0.2em;
+            }
 
             &::placeholder {
                 color: var(--color-002);
@@ -168,20 +212,41 @@
     &__6 {
         grid-column: tip-col-end 4 / tip-end;
     }
+
+    @include queries.respond(screen-md) {
+
+        &__1,
+        &__3,
+        &__5 {
+            grid-column: tip-start / tip-col-start 4; 
+        }
+
+        &__2,
+        &__4,
+        &__6 {
+            grid-column: tip-col-end 3 / tip-end;
+        }
+    }
 }
 
 
 .numberOf__people__container {
     position: relative;
-    // background-color: red;
 }
 
 .error__message {
     position: absolute;
     top: 0;
     right: 0;
-    // left: 0;
-    // background-color: blue;
+    font-size: var(--font-size--xs);
+
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--s);
+    } 
+
+    @include queries.respond(screen-xs) {
+        top: 70px;
+    }
 }
 
 .outputs__container {
@@ -192,6 +257,16 @@
     justify-content: space-between;
     padding: 2.5rem 2rem;
     border-radius: 15px;
+
+    @include queries.respond(screen-md) {
+        padding: 2rem 1.5rem;
+    }
+}
+
+.wrapper {
+    @include queries.respond(screen-md) {
+        margin-bottom: 2rem;
+    }
 }
 
 
@@ -204,6 +279,10 @@
 
 .wrapper__amount {
     margin-bottom: 3rem;
+
+    @include queries.respond(screen-md) {
+        margin-bottom: 1.5rem;
+    }
 }
 
 
@@ -211,6 +290,10 @@
     color: var(--color-006);
     font-size: 1rem;
     font-weight: 300;
+
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--s);
+    } 
 }
 
 .wrapper__person {
@@ -219,6 +302,10 @@
 
 .wrapper__price {
     color: var(--color-001);
-    font-size: 40px;
+    font-size: var(--font-size--x);
+
+    @include queries.respond(screen-xxl) {
+        font-size: var(--font-size--xl); 
+    } 
 }
 
