@@ -18,7 +18,6 @@
 .root__container {
     background-color: var(--color-007);
     width: 100%;
-    // max-width: 62.5rem;
     max-width: 53.125rem;
     margin: 0 auto;
     padding: 2rem 1.8rem 2rem 2.9rem;
@@ -32,7 +31,6 @@
     } 
 
     @include queries.respond(screen-md) {
-        // border: 1px solid red;
         flex-direction: column;
         gap: 2rem;
         padding: 2rem;
@@ -45,7 +43,6 @@
 .inputs__container {
     flex: 1;
     padding: 0.8rem 0;
-    // background-color: lime;
 
     @include queries.respond(screen-md) {
         padding: 0;
@@ -69,6 +66,10 @@
     bottom: 0;
     left: 15px;
     transform: translateY(-80%);
+
+    @include queries.respond(screen-xxl) {
+        transform: translateY(-110%);
+    }
 }
 
 
@@ -145,6 +146,7 @@
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s;
 
     @include queries.respond(screen-xxl) {
         font-size: var(--font-size--md);
@@ -179,8 +181,21 @@
             outline: none;
 
             @include queries.respond(screen-md) {
-                padding: 0.2em;
+                padding-right: 1rem;
             }
+
+            /* Chrome, Safari, Edge, Opera */
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            &[type=number] {
+                -moz-appearance: textfield;
+                color: var(--color-002);
+            } 
 
             &::placeholder {
                 color: var(--color-002);
@@ -195,6 +210,15 @@
                 outline: 2px solid var(--color-001);
             }
         }
+    }
+
+    &:hover {
+        color: var(--color-002);
+        background-color: var(--color-005);
+    }
+    
+    &:active {
+        background-color: var(--color-001);
     }
 
     
