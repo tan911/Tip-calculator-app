@@ -82,6 +82,13 @@ h6 {
     --color-005: hsl(185, 41%, 84%);
     --color-006: hsl(189, 41%, 97%);
     --color-007: hsl(0, 0%, 100%);
+
+    --font-size--xs: 1rem;
+    --font-size--s: 1.125rem;
+    --font-size--default: 1.5rem;
+    --font-size--md: 2rem;
+    --font-size--x: 2.5rem;
+    --font-size--xl: 3.125rem;
 }
 
 @font-face {
@@ -93,30 +100,16 @@ h6 {
 // QUERIES
 @mixin respond($breakpoint) {
 
-  // 600px
+  // 370px
   @if $breakpoint == screen-xs {
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 23.125em) {
       @content;
     }
   }
 
-  // 800px
-  @if $breakpoint == screen-s {
-    @media only screen and (max-width: 50em) {
-      @content;
-    }
-  }
-
-  // 1200px
-  @if $breakpoint == screen-lg {
-    @media only screen and (max-width: 75em) {
-      @content;
-    }
-  }
-
-  // 1400px
-  @if $breakpoint == screen-xl {
-    @media only screen and (max-width: 87.5em) {
+  // 830px
+  @if $breakpoint == screen-md {
+    @media only screen and (max-width: 51.875em) {
       @content;
     }
   }
@@ -135,8 +128,8 @@ body {
     background-color: var(--color-005);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .hidden {
