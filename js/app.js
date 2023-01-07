@@ -1,6 +1,6 @@
 "use strict"
 
-const tipBtn = document.querySelectorAll('#tip__btn');
+const tipBtn = document.querySelectorAll('.tip__btn');
 const customTipInput = document.querySelector('#custom');
 const billAmount = document.querySelector('#bill');
 const numberOfPeople = document.querySelector('#number__of__people');
@@ -8,6 +8,8 @@ const totalTipPerPerson = document.querySelector('#total__amount__per__person');
 const totalPerPerson = document.querySelector('#total__per__person');
 const resetBtn = document.querySelector('#btn__reset');
 const userInput = document.querySelectorAll('.user__input');
+
+
 
 // This will prevent the form for submitting
 document.querySelector('.form').addEventListener('submit', (e) => {
@@ -96,6 +98,8 @@ for(let i = 0; i < tipBtn.length; i++) {
     tipBtn[i].addEventListener('click', () => {
         const percent = tipBtn[i].querySelector('label').textContent;
         selectedTipAmount(percent);
+
+        // document.querySelector('body').addEventListener('')
     })
 }
 
