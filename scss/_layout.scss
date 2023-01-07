@@ -299,7 +299,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include queries.respond(screen-xs) {
+        flex-direction: column;
+    }
 }
+
+.wrapper__heading {
+    @include queries.respond(screen-xs) {
+        display: flex;
+    }
+}
+
 
 .wrapper__amount {
     margin-bottom: 3rem;
