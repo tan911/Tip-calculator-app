@@ -9,7 +9,12 @@ const totalPerPerson = document.querySelector('#total__per__person');
 const resetBtn = document.querySelector('#btn__reset');
 const userInput = document.querySelectorAll('.user__input');
 
-// Check if the window height below 600 
+// This will prevent the form for submitting
+document.querySelector('.form').addEventListener('submit', (e) => {
+    e.preventDefault();
+})
+
+// Check if the screen height below 600 
 // then apply min-height with property value of 100vh
 if(window.innerWidth > 900 && window.innerHeight <= 600) {
     document.querySelector('.main').style.minHeight = '100vh';
@@ -20,8 +25,8 @@ if(window.innerWidth > 900 && window.innerHeight <= 600) {
 function resetAll () {
     billAmount.value = '';
     numberOfPeople.value = '';
-    totalTipPerPerson.textContent = '0.00'; 
-    totalPerPerson.textContent = '0.00';
+    totalTipPerPerson.textContent = '$0.00'; 
+    totalPerPerson.textContent = '$0.00';
     customTipInput.value = '';
     resetBtn.setAttribute('disabled', '');
 }
@@ -31,12 +36,15 @@ function resetAll () {
 function tipPerPersonAmount (input) {
     if(isNaN(+numberOfPeople.value) || +numberOfPeople.value === 0) return;
 
-    const percentage = (+input / 100) * +billAmount.value;
+    const fixedInput = +input === +numberOfPeople.value || +input === +billAmount.value ? +customTipInput.value : +input;  
+    const toInput = customTipInput.value === '' ? +input : fixedInput;
+    const percentage = (toInput / 100) * +billAmount.value;
     const total = percentage / +numberOfPeople.value;
-    
-    totalTipPerPerson.textContent = (Math.floor(total * 100) / 100).toFixed(2);
+        
+    totalTipPerPerson.textContent = `$${(Math.floor(total * 100) / 100).toFixed(2)}`;
+            
+    totalPerPersonAmount(total);   
 
-    totalPerPersonAmount(total);
 }
 
 // Total per person
@@ -46,7 +54,7 @@ function totalPerPersonAmount (input) {
     const perPersonAmount = +billAmount.value / +numberOfPeople.value;
     const totalPerson = +input + perPersonAmount;
    
-    totalPerPerson.textContent = totalPerson.toFixed(2);
+    totalPerPerson.textContent = `$${totalPerson.toFixed(2)}`;
 }
 
 // Display error/success
@@ -67,6 +75,9 @@ function displayMessage(message) {
 // Selected Tip
 function selectedTipAmount (input) {
 
+    // set the custom input empty whenever the user select the tip
+    customTipInput.value = ''
+
     // removing percentage 
     const percentage = input.slice(0, -1);
 
@@ -74,10 +85,11 @@ function selectedTipAmount (input) {
     if(+numberOfPeople.value === 0) {
         displayMessage('error');
     } else {
-        tipPerPersonAmount(percentage)
+        tipPerPersonAmount(percentage);
         displayMessage('success');
     }
 }
+
 
 // Loop every tip buttons and add click handler except custom button
 for(let i = 0; i < tipBtn.length; i++) {
@@ -87,13 +99,22 @@ for(let i = 0; i < tipBtn.length; i++) {
     })
 }
 
-// Loop every inputs
-for(let i = 0; i < userInput.length; i++) {
-    userInput[i].addEventListener('change', (e) => {
+// Loop every inputs add change handler to it
+for(let k = 0; k < userInput.length; k++) {
+    userInput[k].addEventListener('change', (e) => {
+
+        // remove the disabled attribute so that user able to reset the inputs value
         resetBtn.removeAttribute('disabled');
-        tipPerPersonAmount(e.target.value)
+
+        if(!tipBtn[k].checked && customTipInput.value.length === 0) {
+            displayMessage('success');
+            // TODO add accessible modal if the user accidentally not inputted any tip or custom tip
+        } else {
+            tipPerPersonAmount(e.target.value);
+        }   
     })
 }
+
 
 // reset button
 resetBtn.addEventListener('click', resetAll);
