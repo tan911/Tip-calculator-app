@@ -10,7 +10,6 @@ const resetBtn = document.querySelector('#btn__reset');
 const userInput = document.querySelectorAll('.user__input');
 
 
-
 // This will prevent the form for submitting
 document.querySelector('.form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -98,8 +97,6 @@ for(let i = 0; i < tipBtn.length; i++) {
     tipBtn[i].addEventListener('click', () => {
         const percent = tipBtn[i].querySelector('label').textContent;
         selectedTipAmount(percent);
-
-        // document.querySelector('body').addEventListener('')
     })
 }
 
