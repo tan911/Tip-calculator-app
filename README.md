@@ -29,7 +29,6 @@ Users should be able to:
 ### Screenshot
 
 ![](./screenshot/desktop.png)
-![](./screenshot/mobile.png)
 
 
 ### Links
@@ -97,7 +96,7 @@ However, what we really want is just the logo, no text, right? I do this by usin
 
 Now let's talk about javascript. I'm having a great time developing the functionality of this app. Sometimes, in order to generate the best results, you need to put yourself in someone else's position. This application's main goal is to determine the tip of the provided input.
 
-- bill input: Entering your bill's amount
+- bill input - Entering your bill's amount
 - custom input - entering the tip you prefer
 - input selection - chosen tip (for example, 5%, 10%,..)
 - number of people - entering number's of people
