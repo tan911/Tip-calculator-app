@@ -149,7 +149,7 @@ These conditions apply if:
   if(isNaN(+numberOfPeople.value) || +numberOfPeople.value === 0) return;
 ```
 another scenario that could result in bugs in my program is:
-- If the user begins to enter data from the bottom, middle, and then bill input.
+- If the user begins to enter data from the bottom, middle, then bill input and vice versa.
 - switch to a different input choice if the user has already provided a custom input 
 
 For instance, the user will start to type custom input and then bill input, and the number of people, the output of this is not correct as expected. The same as when the user already gives a custom input and then switches to another input choices. 
